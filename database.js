@@ -1,7 +1,7 @@
 export const database = [
   {
     id: 1,
-    imageSource: "./rally-bar-huddle.png",
+    imageSource: "./assets/rally-bar-huddle.png",
     baseprice: 2700,
     basehours: {
       installHours: 4,

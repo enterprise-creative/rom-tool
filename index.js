@@ -216,20 +216,9 @@ function loadData(database) {
   target.insertAdjacentHTML(
     "beforeEnd",
     `<div class="flex flex-wrap justify-center shadow-lg">
-      <style>
-        select {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          background-image: none;
-        }
-        select::-ms-expand {
-          display: none;
-        }
-      </style>
-      <div class="w-[512px] h-[512px] bg-slate-800 p-2"><img src="${
-        database.imageSource
-      }" /></div>
+      <div class="w-[512px] h-[512px] bg-slate-800 p-2">
+        <img src="${database.imageSource}" alt="Product Image" />
+      </div>
       <form id="form" class="w-[512px] h-[512px] bg-slate-800 p-2">
         <table class="w-full overflow-hidden">
           <tbody class="divide-y divide-gray-200">
@@ -242,7 +231,12 @@ function loadData(database) {
             <tr>
               <td class="px-1 py-1">
                 <label for="sourceSelect">Media Sources:</label>
-                <select name="sourceSelect" id="sourceSelect" class="bg-slate-800" onchange="updatePrices(this.form)">
+                <select 
+                  name="sourceSelect" 
+                  id="sourceSelect" 
+                  class="bg-slate-800 appearance-none" 
+                  onchange="updatePrices(this.form)"
+                >
                   ${Object.entries(database.mediaSources)
                     .map(
                       ([value, source], index) =>
@@ -258,7 +252,12 @@ function loadData(database) {
             <tr>
               <td class="px-1 py-1">
                 <label for="displaySelect">Displays:</label>
-                <select name="displaySelect" id="displaySelect" class="bg-slate-800" onchange="updatePrices(this.form)">
+                <select 
+                  name="displaySelect" 
+                  id="displaySelect" 
+                  class="bg-slate-800 appearance-none" 
+                  onchange="updatePrices(this.form)"
+                >
                   ${Object.entries(database.displays)
                     .map(
                       ([value, display], index) =>
@@ -274,7 +273,12 @@ function loadData(database) {
             <tr>
               <td class="px-1 py-1">
                 <label for="cameraSelect">Camera Options:</label>
-                <select name="cameraSelect" id="cameraSelect" class="bg-slate-800" onchange="updatePrices(this.form)">
+                <select 
+                  name="cameraSelect" 
+                  id="cameraSelect" 
+                  class="bg-slate-800 appearance-none" 
+                  onchange="updatePrices(this.form)"
+                >
                   ${Object.entries(database.camera)
                     .map(
                       ([value, camera], index) =>
@@ -290,7 +294,12 @@ function loadData(database) {
             <tr>
               <td class="px-1 py-1">
                 <label for="audioSelect">Audio Options:</label>
-                <select name="audioSelect" id="audioSelect" class="bg-slate-800" onchange="updatePrices(this.form)">
+                <select 
+                  name="audioSelect" 
+                  id="audioSelect" 
+                  class="bg-slate-800 appearance-none" 
+                  onchange="updatePrices(this.form)"
+                >
                   ${Object.entries(database.audio)
                     .map(
                       ([value, audio], index) =>
