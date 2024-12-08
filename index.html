@@ -4,44 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ROM Tool 1.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-
-  <!--BODY SECTION-->
   <body class="flex flex-col min-h-screen bg-slate-900 text-white">
-    <!--HEADER SECTION-->
+    <!-- Header -->
     <header
-      class="flex sticky top-0 z-50 bg-slate-800 text-white justify-between py-4 px-4 shadow-md border-b border-slate-700"
+      class="sticky top-0 z-50 bg-slate-800 text-white flex justify-between items-center py-4 px-4 shadow-md border-b border-slate-700"
     >
       <div
-        class="px-4 hover:text-sky-400 border border-white transition-colors"
+        class="logo px-4 hover:text-sky-400 border border-white transition-colors"
       >
         EC
       </div>
-      <div class="px-4 text-lg">ROM Tool 1.0</div>
-      <div class="px-4 hover:text-sky-400 transition-colors">RESET</div>
+      <div class="app-title text-lg">ROM Tool 1.0</div>
+      <div
+        class="reset-btn px-4 hover:text-sky-400 transition-colors cursor-pointer"
+      >
+        RESET
+      </div>
     </header>
 
-    <!--MAIN SECTION-->
+    <!-- Main Content -->
     <main class="flex flex-col flex-grow items-center bg-slate-900 text-white">
-      <!--DATABASE FILTER SECTION-->
+      <!-- Filters -->
       <form
         id="filter"
         class="flex container mx-auto lg:w-[1024px] bg-slate-800 justify-around m-4 p-2 shadow-lg"
       >
+        <!-- Platform Filters -->
         <div class="p-2">
           <p class="text-lg mb-1">PLATFORM</p>
           <div class="space-y-2">
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="teams"
                 name="platform"
                 value="teams"
-                class="mr-2 text-white focus:ring-sky-500"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
               />
               <label for="teams">Teams</label>
             </div>
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="zoom"
@@ -51,7 +55,7 @@
               />
               <label for="zoom">Zoom</label>
             </div>
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="webex"
@@ -61,10 +65,10 @@
               />
               <label for="webex">Webex</label>
             </div>
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
-                id="Meet"
+                id="meet"
                 name="platform"
                 value="meet"
                 class="mr-2 text-sky-500 focus:ring-sky-500"
@@ -73,10 +77,12 @@
             </div>
           </div>
         </div>
+
+        <!-- Manufacturer Filters -->
         <div class="p-2">
           <p class="text-lg mb-1">MANUFACTURER</p>
           <div class="space-y-2">
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="logitech"
@@ -86,7 +92,7 @@
               />
               <label for="logitech">Logitech</label>
             </div>
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="polycom"
@@ -96,7 +102,7 @@
               />
               <label for="polycom">Polycom</label>
             </div>
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="crestron"
@@ -106,7 +112,7 @@
               />
               <label for="crestron">Crestron</label>
             </div>
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="cisco"
@@ -118,10 +124,12 @@
             </div>
           </div>
         </div>
+
+        <!-- Configuration Filters -->
         <div class="p-2">
           <p class="text-lg mb-1">CONFIGURATION</p>
           <div class="space-y-2">
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="huddle"
@@ -131,7 +139,7 @@
               />
               <label for="huddle">Huddle Room</label>
             </div>
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="small-conference"
@@ -141,7 +149,7 @@
               />
               <label for="small-conference">Small Conf.</label>
             </div>
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="large-conference"
@@ -151,7 +159,7 @@
               />
               <label for="large-conference">Large Conf.</label>
             </div>
-            <div>
+            <div class="filter-option">
               <input
                 type="radio"
                 id="multipurpose"
@@ -165,17 +173,17 @@
         </div>
       </form>
 
-      <!--DATABASE SECTION-->
-      <section id="database"></section>
+      <!-- Database Section -->
+      <section id="database" class="mt-6">
+        <!-- Placeholder for database content -->
+      </section>
     </main>
 
-    <!--FOOTER SECTION-->
-    <footer
-      class="flex h-16 sticky bottom-0 bg-slate-800 text-white justify-center p-4"
-    >
-      2025 Enterprise Creative L.L.C. - All Rights Researved.
+    <!-- Footer -->
+    <footer class="sticky bottom-0 bg-slate-800 text-white text-center py-4">
+      <p>2025 Enterprise Creative L.L.C. - All Rights Reserved.</p>
     </footer>
-    <script src="https://cdn.tailwindcss.com"></script>
+
     <script src="./index.js" type="module"></script>
   </body>
 </html>
