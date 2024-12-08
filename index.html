@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROM Tool 1.0</title>
+  </head>
+
+  <!--BODY SECTION-->
+  <body class="flex flex-col min-h-screen bg-slate-900 text-white">
+    <!--HEADER SECTION-->
+    <header
+      class="flex sticky top-0 z-50 bg-slate-800 text-white justify-between py-4 px-4 shadow-md border-b border-slate-700"
+    >
+      <div
+        class="px-4 hover:text-sky-400 border border-white transition-colors"
+      >
+        EC
+      </div>
+      <div class="px-4 text-lg">ROM Tool 1.0</div>
+      <div class="px-4 hover:text-sky-400 transition-colors">RESET</div>
+    </header>
+
+    <!--MAIN SECTION-->
+    <main class="flex flex-col flex-grow items-center bg-slate-900 text-white">
+      <!--DATABASE FILTER SECTION-->
+      <form
+        id="filter"
+        class="flex sm:w-[768px] lg:w-[1024px] bg-slate-800 justify-around m-4 p-2 shadow-lg"
+      >
+        <div class="p-2">
+          <p class="text-lg mb-1">PLATFORM</p>
+          <div class="space-y-2">
+            <div>
+              <input
+                type="radio"
+                id="teams"
+                name="platform"
+                value="teams"
+                class="mr-2 text-white focus:ring-sky-500"
+              />
+              <label for="teams">Teams</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="zoom"
+                name="platform"
+                value="zoom"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="zoom">Zoom</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="webex"
+                name="platform"
+                value="webex"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="webex">Webex</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="Meet"
+                name="platform"
+                value="meet"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="meet">Google Meet</label>
+            </div>
+          </div>
+        </div>
+        <div class="p-2">
+          <p class="text-lg mb-1">MANUFACTURER</p>
+          <div class="space-y-2">
+            <div>
+              <input
+                type="radio"
+                id="logitech"
+                name="manufacturer"
+                value="logitech"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="logitech">Logitech</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="polycom"
+                name="manufacturer"
+                value="polycom"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="polycom">Polycom</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="crestron"
+                name="manufacturer"
+                value="crestron"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="crestron">Crestron</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="cisco"
+                name="manufacturer"
+                value="cisco"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="cisco">Cisco</label>
+            </div>
+          </div>
+        </div>
+        <div class="p-2">
+          <p class="text-lg mb-1">CONFIGURATION</p>
+          <div class="space-y-2">
+            <div>
+              <input
+                type="radio"
+                id="huddle"
+                name="configuration"
+                value="huddle"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="huddle">Huddle Room</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="small-conference"
+                name="configuration"
+                value="small-conference"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="small-conference">Small Conf.</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="large-conference"
+                name="configuration"
+                value="large-conference"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="large-conference">Large Conf.</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="multipurpose"
+                name="configuration"
+                value="multipurpose"
+                class="mr-2 text-sky-500 focus:ring-sky-500"
+              />
+              <label for="multipurpose">Multipurpose</label>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!--DATABASE SECTION-->
+      <section id="database"></section>
+    </main>
+
+    <!--FOOTER SECTION-->
+    <footer
+      class="flex h-16 sticky bottom-0 bg-slate-800 text-white justify-center p-4"
+    >
+      2025 Enterprise Creative L.L.C. - All Rights Researved.
+    </footer>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
