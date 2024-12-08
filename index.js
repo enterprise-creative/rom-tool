@@ -215,11 +215,13 @@ function updateTotalRow(form, rowLabel, amount) {
 function loadData(database) {
   target.insertAdjacentHTML(
     "beforeEnd",
-    `<div class="flex flex-wrap justify-center shadow-lg">
-      <div class="w-[512px] h-[512px] bg-slate-800 p-2">
-        <img src="${database.imageSource}" alt="Product Image" />
+    `<div class="flex container mx-auto lg:w-[1024px] flex-wrap justify-center shadow-lg">
+      <div class="lg:w-[512px] w-full bg-slate-800 p-2">
+        <img src="${
+          database.imageSource
+        }" alt="Product Image" class="w-full h-auto object-cover"/>
       </div>
-      <form id="form" class="w-[512px] h-[512px] bg-slate-800 p-2">
+      <form id="form" class="lg:w-[512px] w-full bg-slate-800 p-2">
         <table class="w-full overflow-hidden">
           <tbody class="divide-y divide-gray-200">
             <tr>
