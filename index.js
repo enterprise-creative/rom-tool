@@ -1,12 +1,28 @@
 import { database } from "./database.js";
 
 const target = document.getElementById("database");
-const filter = document.getElementById("filter");
+const filterForm = document.getElementById("filter");
 
-filter.addEventListener("change", (event) => {
-  const filtered = database.filter(
-    (item) => item.manufacturer === filter.value
-  );
+filterForm.addEventListener("change", (event) => {
+  const selectedManufacturer = filterForm.querySelector(
+    'input[name="manufacturer"]:checked'
+  )?.value;
+  const selectedConfiguration = filterForm.querySelector(
+    'input[name="configuration"]:checked'
+  )?.value;
+
+  const filtered = database.filter((item) => {
+    const manufacturerMatch =
+      !selectedManufacturer || item.manufacturer === selectedManufacturer;
+    const configurationMatch =
+      !selectedConfiguration ||
+      (Array.isArray(item.configuration)
+        ? item.configuration.includes(selectedConfiguration)
+        : item.configuration === selectedConfiguration);
+
+    return manufacturerMatch && configurationMatch;
+  });
+
   clearData();
   filtered.forEach(loadData);
 });
