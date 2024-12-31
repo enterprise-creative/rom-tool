@@ -5,11 +5,7 @@ const filter = document.getElementById("filter");
 
 filter.addEventListener("change", (event) => {
   const filtered = database.filter(
-    (item) =>
-      item.manufacturer === filter.manufacturer.value &&
-      (Array.isArray(item.configuration)
-        ? item.configuration.includes(filter.configuration.value)
-        : item.configuration === filter.configuration.value)
+    (item) => item.manufacturer === filter.value
   );
   clearData();
   filtered.forEach(loadData);
