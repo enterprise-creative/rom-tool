@@ -9,7 +9,6 @@ export const database = [
       programingHours: 0,
       managementHours: 8,
     },
-    platform: ["teams", "zoom", "meet"],
     manufacturer: "logitech",
     configuration: "conference",
     UCHardware: "Rally Bar Huddle System",
