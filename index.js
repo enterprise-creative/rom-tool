@@ -3,6 +3,9 @@ import { database } from "./database.js";
 const target = document.getElementById("database");
 const filterForm = document.getElementById("filter");
 
+// Initial load - show all data
+database.forEach(loadData);
+
 filterForm.addEventListener("change", (event) => {
   const selectedManufacturer = filterForm.querySelector(
     'input[name="manufacturer"]:checked'
@@ -15,16 +18,15 @@ filterForm.addEventListener("change", (event) => {
     const manufacturerMatch =
       !selectedManufacturer || item.manufacturer === selectedManufacturer;
     const configurationMatch =
-      !selectedConfiguration ||
-      (Array.isArray(item.configuration)
-        ? item.configuration.includes(selectedConfiguration)
-        : item.configuration === selectedConfiguration);
+      !selectedConfiguration || item.configuration === selectedConfiguration;
 
     return manufacturerMatch && configurationMatch;
   });
 
   clearData();
-  filtered.forEach(loadData);
+  if (filtered.length > 0) {
+    filtered.forEach(loadData);
+  }
 });
 
 function updatePrices(form) {
@@ -80,21 +82,18 @@ function updatePrices(form) {
       audioOptions.hours.installHours +
       cameraOptions.hours.installHours +
       sourceOptions.hours.installHours,
-
     configHours:
       currentConfig.basehours.configHours +
       displayOptions.hours.configHours +
       audioOptions.hours.configHours +
       cameraOptions.hours.configHours +
       sourceOptions.hours.configHours,
-
     programingHours:
       currentConfig.basehours.programingHours +
       displayOptions.hours.programingHours +
       audioOptions.hours.programingHours +
       cameraOptions.hours.programingHours +
       sourceOptions.hours.programingHours,
-
     managementHours:
       currentConfig.basehours.managementHours +
       displayOptions.hours.managementHours +
@@ -117,7 +116,6 @@ function updatePrices(form) {
 
   const laborSubtotal =
     installationCost + configurationCost + programmingCost + managementCost;
-
   const projectSubtotal = partsSubtotal + laborSubtotal;
   const taxRate = 0.06;
   const tax = projectSubtotal * taxRate;
@@ -157,7 +155,6 @@ function updatePrices(form) {
   updateTotalRow(form, "ROM:", total);
 }
 
-// Helper function to get both price and hours from an option
 function getOptionDetails(categoryData, value) {
   if (!categoryData || !value) {
     return {
@@ -223,34 +220,29 @@ function updateTotalRow(form, rowLabel, amount) {
   }
 }
 
-function loadData(database) {
+function loadData(data) {
   target.insertAdjacentHTML(
     "beforeEnd",
     `<div class="flex container mx-auto lg:w-[1024px] flex-wrap justify-center shadow-lg">
       <div class="lg:w-[512px] w-full bg-slate-800 p-3">
         <img src="${
-          database.imageSource
+          data.imageSource
         }" alt="Product Image" class="w-full h-auto object-cover"/>
       </div>
       <form id="form" class="lg:w-[512px] w-full bg-slate-800 p-3">
         <table class="w-full overflow-hidden">
           <tbody class="divide-y divide-gray-200">
             <tr>
-              <td class="px-1 py-1 w-4/5">${database.UCHardware}</td>
-              <td class="px-1 py-1 w-1/5 text-right">$${database.baseprice.toFixed(
+              <td class="px-1 py-1 w-4/5">${data.UCHardware}</td>
+              <td class="px-1 py-1 w-1/5 text-right">$${data.baseprice.toFixed(
                 2
               )}</td>
             </tr>
             <tr>
               <td class="px-1 py-1">
                 <label for="sourceSelect">Media Sources:</label>
-                <select 
-                  name="sourceSelect" 
-                  id="sourceSelect" 
-                  class="bg-slate-800 appearance-none" 
-                  onchange="updatePrices(this.form)"
-                >
-                  ${Object.entries(database.mediaSources)
+                <select name="sourceSelect" id="sourceSelect" class="bg-slate-800 appearance-none" onchange="updatePrices(this.form)">
+                  ${Object.entries(data.mediaSources)
                     .map(
                       ([value, source], index) =>
                         `<option value="${value}" ${
@@ -265,13 +257,8 @@ function loadData(database) {
             <tr>
               <td class="px-1 py-1">
                 <label for="displaySelect">Displays:</label>
-                <select 
-                  name="displaySelect" 
-                  id="displaySelect" 
-                  class="bg-slate-800 appearance-none" 
-                  onchange="updatePrices(this.form)"
-                >
-                  ${Object.entries(database.displays)
+                <select name="displaySelect" id="displaySelect" class="bg-slate-800 appearance-none" onchange="updatePrices(this.form)">
+                  ${Object.entries(data.displays)
                     .map(
                       ([value, display], index) =>
                         `<option value="${value}" ${
@@ -286,13 +273,8 @@ function loadData(database) {
             <tr>
               <td class="px-1 py-1">
                 <label for="cameraSelect">Camera Options:</label>
-                <select 
-                  name="cameraSelect" 
-                  id="cameraSelect" 
-                  class="bg-slate-800 appearance-none" 
-                  onchange="updatePrices(this.form)"
-                >
-                  ${Object.entries(database.camera)
+                <select name="cameraSelect" id="cameraSelect" class="bg-slate-800 appearance-none" onchange="updatePrices(this.form)">
+                  ${Object.entries(data.camera)
                     .map(
                       ([value, camera], index) =>
                         `<option value="${value}" ${
@@ -307,13 +289,8 @@ function loadData(database) {
             <tr>
               <td class="px-1 py-1">
                 <label for="audioSelect">Audio Options:</label>
-                <select 
-                  name="audioSelect" 
-                  id="audioSelect" 
-                  class="bg-slate-800 appearance-none" 
-                  onchange="updatePrices(this.form)"
-                >
-                  ${Object.entries(database.audio)
+                <select name="audioSelect" id="audioSelect" class="bg-slate-800 appearance-none" onchange="updatePrices(this.form)">
+                  ${Object.entries(data.audio)
                     .map(
                       ([value, audio], index) =>
                         `<option value="${value}" ${
@@ -335,25 +312,25 @@ function loadData(database) {
             </tr>
             <tr>
               <td class="px-1 py-1">${
-                database.basehours.installHours
+                data.basehours.installHours
               } Installation Hours</td>
               <td class="px-1 py-1 text-right">$-</td>
             </tr>
             <tr>
               <td class="px-1 py-1">${
-                database.basehours.configHours
+                data.basehours.configHours
               } Configuration Hours</td>
               <td class="px-1 py-1 text-right">$-</td>
             </tr>
             <tr>
               <td class="px-1 py-1">${
-                database.basehours.programingHours
+                data.basehours.programingHours
               } Programming Hours</td>
               <td class="px-1 py-1 text-right">$-</td>
             </tr>
             <tr>
               <td class="px-1 py-1">${
-                database.basehours.managementHours
+                data.basehours.managementHours
               } Management Hours</td>
               <td class="px-1 py-1 text-right">$-</td>
             </tr>
