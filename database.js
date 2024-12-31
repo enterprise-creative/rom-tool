@@ -11,7 +11,7 @@ export const database = [
     },
     platform: ["teams", "zoom", "meet"],
     manufacturer: "logitech",
-    configuration: "huddle",
+    configuration: "conference",
     UCHardware: "Rally Bar Huddle System",
     mediaSources: {
       hdmiCable: {
