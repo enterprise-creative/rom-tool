@@ -6,7 +6,6 @@ const filter = document.getElementById("filter");
 filter.addEventListener("change", (event) => {
   const filtered = database.filter(
     (item) =>
-      item.platform.includes(filter.platform.value) &&
       item.manufacturer === filter.manufacturer.value &&
       (Array.isArray(item.configuration)
         ? item.configuration.includes(filter.configuration.value)
