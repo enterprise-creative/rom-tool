@@ -117,9 +117,9 @@ function updatePrices(form) {
   const laborSubtotal =
     installationCost + configurationCost + programmingCost + managementCost;
   const projectSubtotal = partsSubtotal + laborSubtotal;
-  const taxRate = 0.06;
-  const tax = projectSubtotal * taxRate;
-  const total = projectSubtotal + tax;
+  const shippingRate = 0.05;
+  const shipping = projectSubtotal * shippingRate;
+  const total = projectSubtotal + shipping;
 
   // Update hour rows in the table
   updateHourRow(
@@ -151,7 +151,7 @@ function updatePrices(form) {
   updateTotalRow(form, "Parts Subtotal:", partsSubtotal);
   updateTotalRow(form, "Labor Subtotal:", laborSubtotal);
   updateTotalRow(form, "Project Subtotal:", projectSubtotal);
-  updateTotalRow(form, "Tax:", tax);
+  updateTotalRow(form, "Shipping:", shipping);
   updateTotalRow(form, "ROM:", total);
 }
 
@@ -343,7 +343,7 @@ function loadData(data) {
               <td class="px-1 py-1 text-right">$-</td>
             </tr>
             <tr>
-              <td class="px-1 py-1 text-right">Tax:</td>
+              <td class="px-1 py-1 text-right">Shipping:</td>
               <td class="px-1 py-1 text-right">$-</td>
             </tr>
             <tr>
